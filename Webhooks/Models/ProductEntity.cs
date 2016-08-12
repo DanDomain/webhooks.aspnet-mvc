@@ -2,7 +2,7 @@
 
 namespace Webhooks.Models
 {
-    class ProductEntity: IEntity
+    internal class ProductEntity: IEntity
     {
         public string ShortDescription { get; set; }
 
