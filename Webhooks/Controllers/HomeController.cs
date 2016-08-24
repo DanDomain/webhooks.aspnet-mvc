@@ -27,7 +27,7 @@ namespace Webhooks.Controllers
                 //display the response body as a message box.
                 MessageBox.Show(text);
 
-                return Content(text);
+                return Content(string.Empty);
             }
         }
 
