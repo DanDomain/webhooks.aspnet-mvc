@@ -48,7 +48,7 @@ namespace Webhooks.Controllers
                 {
                     //the event is for a product.
 
-                    if (item.NewValues == null && item.OldValues != null)
+                    if (item.NewValues?.Count == 0 && item.OldValues?.Count > 0)
                     {
                         //product was deleted.
                         var productNumber = (string)item.OldValues["ObjectIdentifier"];
@@ -60,7 +60,7 @@ namespace Webhooks.Controllers
                             $"Product deleted with product number {productNumber}");
 
                     }
-                    else if (item.NewValues != null && item.OldValues == null)
+                    else if (item.NewValues?.Count > 0 && item.OldValues?.Count == 0)
                     {
                         //product was created.
                         var productNumber = (string)item.NewValues["ObjectIdentifier"];
@@ -71,7 +71,7 @@ namespace Webhooks.Controllers
                                 item.NewValues),
                             $"Product created with product number {productNumber}");
 
-                    } else if (item.NewValues != null && item.OldValues != null)
+                    } else if (item.NewValues?.Count > 0 && item.OldValues?.Count > 0)
                     {
                         //product was modified.
                         var oldProductNumber = (string)item.OldValues["ObjectIdentifier"];
